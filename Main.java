@@ -16,20 +16,15 @@ public class Main {
             fileInputStream.read(bFile);
             fileInputStream.close();
 
-            int arrayLength = 255;
+            int arrayLength = 256;
             int[] arrayOfBytes = new int[arrayLength];
 
             for (int i = 0; i < arrayLength; i++) {
                     arrayOfBytes[i]=0;
-
             }
 
-            for (int j = 0; j < 255; j++) {
-                for (int i = 0; i < bFile.length; i++) {
-                    if(bFile[i] == j){
-                        arrayOfBytes[j]+=1;
-                    }
-                }
+            for (int i = 0; i < bFile.length; i++) {
+                   arrayOfBytes[bFile[i]+128]+=1;
             }
 
             System.out.println("Counts of byte:");
@@ -43,7 +38,5 @@ public class Main {
         {
             e.printStackTrace();
         }
-
-
     }
 }
