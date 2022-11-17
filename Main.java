@@ -3,7 +3,6 @@ import java.io.FileInputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-
 public class Main {
     public static void main(String[] args) {
         Path path = Paths.get("D:\\Programm learning\\Neeeded Skills\\schedule4.pdf");
@@ -18,35 +17,25 @@ public class Main {
             fileInputStream.close();
 
             int arrayLength = 255;
-            int arrayValues = 2;
+            int[] arrayOfBytes = new int[arrayLength];
 
-            int[][] arrayOfBytes = new int[arrayLength][arrayValues];
             for (int i = 0; i < arrayLength; i++) {
-                for (int j = 0; j < arrayValues; j++) {
-                    arrayOfBytes[i][j]=0;
-                }
+                    arrayOfBytes[i]=0;
+
             }
 
-
-
             for (int j = 0; j < 255; j++) {
-                int countOfByte = 0;
-                for (int i = 0; i < bFile.length; i++)
-                {
+                for (int i = 0; i < bFile.length; i++) {
                     if(bFile[i] == j){
-                        countOfByte++;
-                        arrayOfBytes[j][0]=j;
-                        arrayOfBytes[j][1]=countOfByte;
+                        arrayOfBytes[j]+=1;
                     }
                 }
             }
 
             System.out.println("Counts of byte:");
             for (int i = 0; i < arrayLength; i++) {
-                if(arrayOfBytes[i][0] !=0) {
-                    for (int j = 0; j < 1; j++) {
-                        System.out.println("Bytes " + arrayOfBytes[i][0] + " seems " + arrayOfBytes[i][1] + " times.");
-                    }
+                if(arrayOfBytes[i] !=0) {
+                    System.out.println("Bytes " + i + " seems " + arrayOfBytes[i] + " times.");
                 }
             }
         }
